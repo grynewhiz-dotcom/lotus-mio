@@ -1,7 +1,4 @@
-/* Format: "Kategori": [harga dasar (ribuan), "Nama|Deskripsi|harga (opsional, ribuan)", ...]
-   Foto menu: simpan di images/menu/ dengan nama = nama menu huruf kecil, spasi jadi "-".
-   Contoh: "Pizza Margherita" -> images/menu/pizza-margherita.jpg
-   Harga di bawah hanya contoh. Kategori Water, Roasted Chicken, Steak, Cold Brew, Tea Pot belum ada, tambahkan sendiri. */
+/* DATA MENU */
 const MENU = {
 "Soup": [42, "Organic Tomato Soup||40", "Parmesan Mushroom Soup", "Warm Vichyssoise Soup|Potato cream soup with smoked beef"],
 "Desserts": [35, "Apple Pie With Vanilla Ice Cream||40", "Klappertaart Pie With Vanilla Ice Cream", "Chocolate Lava Cake With Vanilla Ice Cream||40", "Strawberry Cheese Pie", "Chocolate Cheese Pie", "Mango Cheese Pie", "Blueberry Cheese Pie", "Vanilla Ice Cream||20"],
