@@ -1,11 +1,11 @@
-/* ===== PENGATURAN: edit bagian ini saja ===== */
+/* PENGATURAN */
 const CONFIG = {
-  gofoodUrl: "https://gofood.co.id/yogyakarta/restaurant/lotus-mio-bangunjiwo-b3495827-48d4-436d-807c-d5c6ddaa2fcf",           // ganti dengan link GoFood Lotus Mio
-  instagramUrl: "https://www.instagram.com/lotusmio?psln=aWs3anJ0ZGlkeTBz",  // ganti dengan IG resto
+  gofoodUrl: "https://gofood.co.id/yogyakarta/restaurant/lotus-mio-bangunjiwo-b3495827-48d4-436d-807c-d5c6ddaa2fcf",
+  instagramUrl: "https://www.instagram.com/lotusmio?psln=aWs3anJ0ZGlkeTBz",
   mapsUrl: "https://maps.app.goo.gl/cEBxqRVGwmJpixZn9",
-  email: "lotusmio10@gmail.com",             // email contoh
-  waNumber: "087726604177",                                // kosongkan dulu. Isi format 62812xxxx kalau mau aktif
-  // Jam buka (WIB), format "JJ:MM". Edit di sini saja, semua teks jam buka ikut berubah.
+  email: "lotusmio10@gmail.com",
+  waNumber: "087726604177",
+  // Jam buka (WIB)
   jam: {
     hariKerja: ["10:00", "22:00"],   // Senin - Jumat
     akhirPekan: ["07:30", "23:00"]   // Sabtu - Minggu
@@ -13,7 +13,7 @@ const CONFIG = {
   destination: "Lotus Mio Bangunjiwo Restaurant, Bantul, Yogyakarta"
 };
 
-// Foto area: taruh di images/ dengan nama awalan + nomor, contoh indoor1.jpg ... indoor6.jpg
+// Area
 const AREAS = [
   { id: "indoor", name: "Indoor", title: "Indoor yang Sejuk", pre: "indoor", n: 6,
     text: "Cari tempat nyaman buat makan dan ngobrol lebih lama? Area indoor ber-AC cocok untuk kumpul keluarga, quality time bareng bestie, sampai meeting santai tanpa khawatir cuaca.",
@@ -32,10 +32,8 @@ const REVIEWS = [
   { name: "Erwansyah Bela", stars: 5, text: "Lokasi bagus, tenang suasana dan viewe hijau. Makanan dan minuman western enak semua. Harga make sense. Cocok utk bersantai. Disediakan board game gratis, yg bisa bikin suasana cair dan gembira. Recomended utk acara bersama keluarga atau teman." },
   { name: "Banyubiru Putra", stars: 4, text: "Tempat 9/10 bener-bener bagus banget, selain itu mereka juga menyediakan mushola dan playground secara serius. Pelayanan 7.9/10 sebenrnya tidak ada yang salah dengan pelyanan, hanya kurang komunikatif saja jadi terkesan cuek dan seadanya. Rasa 7.5/10 mungkin perlu ada improvement, dan rekan2 saya pun berpendapat sama. Harga 8/10 menurut saya harga sesuai dengan tempat sebagus ini" }
 ];
-// Menu favorit: tulis nama persis seperti di menu-data.js (3 atau lebih)
+// Menu favorit
 const FAVORIT = ["Nasi Campur Ala Mio", "Claypot Ayam Woku", "Chocolate Cheese Pie"];
-/* Menu ada di file menu-data.js */
-/* ===== akhir pengaturan ===== */
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -44,8 +42,9 @@ const home = document.body.dataset.page === "home", P = home ? "" : "index.html"
 const NAV = [["beranda", "Beranda"], ["tentang", "Tentang"], ["area", "Area"], ["menu", "Menu"], ["ulasan", "Ulasan"], ["kontak", "Kontak"]];
 const navLinks = NAV.map(([id, t]) => `<a href="${P}#${id}">${t}</a>`).join("");
 const fmt = t => t.replace(":", ".");
-const hrs = `Senin - Jumat: ${CONFIG.jam.hariKerja.map(fmt).join(" - ")} WIB<br>Sabtu - Minggu: ${CONFIG.jam.akhirPekan.map(fmt).join(" - ")} WIB`;
-const WA = CONFIG.waNumber ? `href="https://wa.me/${CONFIG.waNumber}" target="_blank" rel="noopener"` : `href="#" title="Isi waNumber di script.js"`;
+const rentang = a => a.map(fmt).join("&nbsp;-&nbsp;") + "&nbsp;WIB";
+const hrs = `Senin - Jumat: ${rentang(CONFIG.jam.hariKerja)}<br>Sabtu - Minggu: ${rentang(CONFIG.jam.akhirPekan)}`;
+const WA = CONFIG.waNumber ? `href="https://wa.me/${CONFIG.waNumber}" target="_blank" rel="noopener"` : `href="#"`;
 const brand = `<a href="${P}#beranda" class="logo"><span class="logo-mark"></span><span class="logo-text">Lotus Mio Bangunjiwo</span></a>`;
 const ic = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
 const ICON = {
@@ -54,7 +53,7 @@ const ICON = {
   wa: ic('<path d="M20.5 3.5A11 11 0 0 0 3.2 17.3L2 22l4.8-1.2A11 11 0 1 0 20.5 3.5z"/><path d="M8.5 8c.5 3 3 5.5 6.5 6.5l1.5-1.5-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/>')
 };
 
-// Header & footer (dipakai di semua halaman)
+// Header & footer
 $("#siteHeader").outerHTML = `<header class="nav${home ? "" : " solid"}" id="nav">${brand}<nav id="menuNav">${navLinks}</nav>
 <div class="nav-right"><a class="btn btn-sm btn-res" href="${P}#reservasi">Reservasi<i>→</i></a>
 <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false"><span></span><span></span></button></div></header>`;
@@ -73,12 +72,12 @@ burger.addEventListener("click", () => { const o = menuNav.classList.toggle("ope
 menuNav.addEventListener("click", e => { if (e.target.tagName === "A") { menuNav.classList.remove("open"); burger.setAttribute("aria-expanded", false); document.body.style.overflow = ""; } });
 toTop.addEventListener("click", () => scrollTo({ top: 0 }));
 
-// Efek gambar "timbul" saat di-scroll
+// Efek muncul saat scroll
 const popObs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); popObs.unobserve(e.target); } }), { threshold: .12, rootMargin: "0px 0px -6% 0px" });
 const pop = els => els.forEach((el, i) => { el.classList.add("pop"); el.style.transitionDelay = (i % 4) * 90 + "ms"; popObs.observe(el); });
 pop($$(".arch:not(.hero-img), .tile, .value, .shot"));
 
-// Lengkung hero halaman Kenalan ikut gerak mouse
+// Lengkung hero halaman Kenalan
 const phero = $(".page-hero");
 if (phero && !matchMedia("(prefers-reduced-motion: reduce)").matches) phero.addEventListener("mousemove", e => {
   const r = phero.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - .5, dy = (e.clientY - r.top) / r.height - .5;
@@ -91,13 +90,13 @@ if (home) {
   $$(".js-ig").forEach(a => a.href = CONFIG.instagramUrl);
   $$(".js-mail").forEach(a => { a.href = "mailto:" + CONFIG.email; a.textContent = CONFIG.email; });
 
-  // Menu aktif saat scroll
+  // Navbar aktif saat scroll
   const links = $$("#menuNav a");
   const spy = new IntersectionObserver(es => es.forEach(e => e.isIntersecting &&
     links.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + e.target.id))), { rootMargin: "-45% 0px -50% 0px" });
   $$("main section[id]").forEach(s => spy.observe(s));
 
-  // Hitung angka
+  // Angka statistik
   const counter = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
     const el = e.target, end = +el.dataset.count; let n = 0;
@@ -146,9 +145,9 @@ if (home) {
   panel.addEventListener("keydown", e => e.key === "Enter" && e.target.classList.contains("slide") && openBox(e.target));
   showArea(AREAS[0].id);
 
-  // Menu: kategori + pencarian, tiap menu punya foto (images/menu/nama-menu.jpg)
+  // Menu
   const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-  // Harga: "20" = satu harga, "20/25" = panas/dingin, pakai "-" kalau salah satunya tidak ada ("20/-" atau "-/25")
+  // Harga
   const parsePrice = v => String(v).includes("/") ? String(v).split("/").map(x => +x ? +x * 1000 : null) : [(+v) * 1000];
   const priceHTML = p => p.length === 1 ? `<b class="price">${rupiah(p[0])}</b>`
     : `<div class="price-hc">${[["Panas", p[0], "hot"], ["Dingin", p[1], "cold"]].filter(([, v]) => v).map(([l, v, k]) => `<span class="${k}"><small>${l}</small><b>${rupiah(v)}</b></span>`).join("")}</div>`;
@@ -175,13 +174,13 @@ if (home) {
   search.addEventListener("input", renderMenu);
   renderMenu();
 
-  // Menu favorit (ambil data dari daftar menu)
+  // Menu favorit
   $("#favGrid").innerHTML = FAVORIT.map(n => ALL.find(m => m.n === n)).filter(Boolean).map(m => `<article class="fav">
     <div class="arch fav-img"><span class="fav-tag">Favorit</span><em>${m.n[0]}</em><img loading="lazy" src="images/menu/${slug(m.n)}.jpg" alt="${m.n}" onerror="this.remove()"></div>
     <h3>${m.n}</h3>${priceHTML(m.p)}</article>`).join("");
   pop($$(".fav"));
 
-  // Ulasan (otomatis + tombol < >)
+  // Ulasan
   const revBox = $("#reviews"), dots = $("#reviewDots");
   let ri = 0, timer;
   dots.innerHTML = REVIEWS.map((_, i) => `<button aria-label="Ulasan ${i + 1}" data-i="${i}"></button>`).join("");
@@ -198,7 +197,7 @@ if (home) {
   revBox.addEventListener("mouseleave", play);
   showReview(0); play();
 
-  // Reservasi (simulasi, data tidak dikirim ke mana pun)
+  // Reservasi
   const form = $("#resForm"), formHTML = form.innerHTML;
   const today = new Date().toISOString().split("T")[0];
   form.tgl.min = today;
@@ -217,7 +216,7 @@ if (home) {
     $("#again").onclick = () => { form.innerHTML = formHTML; form.tgl.min = today; };
   });
 
-  // Arahkan dari lokasi pengguna
+  // Petunjuk arah
   $("#dirBtn").addEventListener("click", () => {
     const st = $("#dirStatus"), dest = encodeURIComponent(CONFIG.destination);
     const go = o => window.open(`https://www.google.com/maps/dir/?api=1&destination=${dest}${o ? "&origin=" + o : ""}`, "_blank");
@@ -229,7 +228,7 @@ if (home) {
       { timeout: 8000 });
   });
 
-  // Mampir: status buka, kata berganti, pita berjalan, parallax lengkung
+  // Section Mampir
   $$(".js-hours").forEach(el => el.innerHTML = hrs);
   const now = new Date(), tz = { timeZone: "Asia/Jakarta" };
   const day = new Intl.DateTimeFormat("en-US", { weekday: "short", ...tz }).format(now);
