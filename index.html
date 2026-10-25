@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lotus Mio Bangunjiwo Restaurant</title>
+<meta name="description" content="Makan santai bareng keluarga dan teman di Lotus Mio Bangunjiwo, Yogyakarta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600;1,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+<div id="siteHeader"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lotus" viewBox="0 0 100 100"><path d="M50 14C39 34 39 56 50 76C61 56 61 34 50 14Z"/><path d="M50 76C27 72 14 56 12 38C31 40 45 55 50 76Z"/><path d="M50 76C73 72 86 56 88 38C69 40 55 55 50 76Z"/><path d="M50 76C26 80 8 69 3 53C22 51 40 61 50 76Z"/><path d="M50 76C74 80 92 69 97 53C78 51 60 61 50 76Z"/><path d="M22 88H78"/></symbol></svg>
+<main>
+<section class="hero" id="beranda">
+  <div class="hero-text">
+    <p class="kicker">Hidden Gem in Bantul, Yogyakarta</p>
+    <h1>Delight your Tastebud with Our Amazing Fusion Dish</h1>
+    <p class="lead">Rasakan pengalaman bersantap yang memadukan keindahan alam, kenyamanan, dan kelezatan kuliner dalam satu tempat melalui perpaduan arsitektur minimalis modern dengan sentuhan tradisi yang tak lekang oleh waktu.</p>
+    <div class="actions">
+      <a href="#reservasi" class="btn btn-res">Reservasi Meja<i>→</i></a>
+      <a href="#menu" class="btn btn-ghost">Lihat Menu</a>
+    </div>
+    <ul class="chips"><li>1000+ Ratings</li><li>Cafe</li><li>Restaurant</li><li>Italian-Indonesian</li></ul>
+  </div>
+  <div class="hero-art">
+    <div class="arches hero-arches" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="arch hero-img" style="--img:url('images/hero.png')" role="img" aria-label="Suasana Lotus Mio"></div>
+    <div class="seal" aria-hidden="true"><svg class="ring" viewBox="0 0 120 120"><defs><path id="sealPath" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#sealPath" textLength="284" lengthAdjust="spacing">Hidden Gem ✦ Italian-Indonesian ✦ Bangunjiwo ✦</textPath></text></svg><svg class="sl"><use href="#lotus"/></svg></div>
+  </div>
+</section>
+
+<section class="section" id="tentang">
+  <div class="wrap two">
+    <div class="arch about-img" style="--img:url('images/tentang.png')" role="img" aria-label="Sudut Lotus Mio"></div>
+    <div>
+      <h2>When Nature Meets Culinary Bliss</h2>
+      <p>Lotus Mio berlokasi di Bangunjiwo, Kasihan, Bantul, Yogyakarta, menghadirkan suasana asri dengan perpaduan nuansa hijau dan elemen kayu yang hangat.</p>
+      <p>Dilengkapi playground dan board game, Lotus Mio menawarkan pengalaman bersantap yang menyenangkan bagi semua kalangan. Pengunjung juga dapat menjelajahi toko kecil untuk menemukan beragam pernak-pernik menarik sebagai buah tangan.</p>
+      <div class="stats">
+        <div><strong data-count="5">0</strong><span>Zona seru</span></div>
+        <div><strong data-count="10">0</strong><span>Board game & card game</span></div>
+        <div><strong data-count="2">0</strong><span>Pilihan area makan</span></div>
+      </div>
+      <a href="about.html" class="btn btn-res">Kenalan lebih dekat<i>→</i></a>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="area">
+  <svg class="lotus-deco ld-right" aria-hidden="true"><use href="#lotus"/></svg>
+  <div class="wrap">
+    <h2>Choose Your Favorit Area</h2>
+    <p class="sub">Klik tab untuk lihat tiap area, geser foto untuk lihat lebih banyak.</p>
+    <div class="tabs" id="areaTabs" role="tablist"></div>
+    <div class="area-panel" id="areaPanel" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="section" id="favorit">
+  <div class="wrap">
+    <h2>Our Favorite Menu</h2>
+    <p class="sub">Pilihan yang paling sering dicari pengunjung.</p>
+    <div class="fav-grid" id="favGrid"></div>
+  </div>
+</section>
+
+<section class="section leaf" id="menu">
+  <div class="wrap">
+    <h2>Our Menu</h2>
+    <div class="gofood-bar"><span>Mau dinikmati di rumah? Pesan antar lewat GoFood.</span><a href="#" class="btn btn-sm js-gofood" target="_blank" rel="noopener">Beli online di GoFood</a></div>
+    <div class="toolbar">
+      <div class="filters" id="menuFilters"></div>
+      <input type="search" id="menuSearch" placeholder="Cari menu di semua kategori..." aria-label="Cari menu">
+    </div>
+    <div class="menu-grid" id="menuGrid"></div>
+    <p class="empty" id="menuEmpty" hidden>Menu tidak ditemukan. Coba kata kunci lain.</p>
+    <p class="note">Gambar menu hanya sebagai ilustrasi. Tampilan dan sajian dapat berbeda dari produk aslinya.</p>
+  </div>
+</section>
+
+<section class="section" id="ulasan">
+  <div class="wrap">
+    <h2>What Our Customers Says?</h2>
+    <div class="rev-wrap">
+      <button class="arrow" id="revPrev" aria-label="Ulasan sebelumnya">&#8249;</button>
+      <div class="reviews" id="reviews" aria-live="polite"></div>
+      <button class="arrow" id="revNext" aria-label="Ulasan berikutnya">&#8250;</button>
+    </div>
+    <div class="dots" id="reviewDots"></div>
+    <p class="center"><a class="link js-maps" href="#" target="_blank" rel="noopener">Baca semua ulasan di Google Maps</a></p>
+  </div>
+</section>
+
+<section class="dinner" id="dinner" style="--img:url('images/dinner.jpg')">
+  <div class="dinner-box">
+    <p class="kicker eyebrow">Tonight at Lotus Mio</p>
+    <h2>Do You Have Any <em>Dinner Plan</em> Today?</h2>
+    <p>Biar kami siapkan hidangannya. Kamu tinggal datang, duduk santai, dan nikmati malam bersama orang-orang tersayang.</p>
+    <p class="dinner-hours js-hours"></p>
+    <div class="actions"><a href="#reservasi" class="btn btn-res">Reservasi Meja<i>→</i></a><a href="#menu" class="btn btn-ghost">Lihat Menu</a></div>
+  </div>
+</section>
+
+<section class="section dark" id="reservasi">
+  <svg class="lotus-deco ld-left" aria-hidden="true"><use href="#lotus"/></svg>
+  <div class="wrap two">
+    <div>
+      <h2>Reserve Table</h2>
+      <p>Isi formulir untuk mencatat rencana kunjunganmu. Disarankan reservasi di akhir pekan dan hari libur.</p>
+      <div class="online">
+        <a href="#" class="js-gofood" target="_blank" rel="noopener"><span><b>GoFood</b><small>Pesan antar langsung ke rumah</small></span><i>→</i></a>
+        <a href="#" class="js-maps" target="_blank" rel="noopener"><span><b>Google Maps</b><small>Lihat foto dan ulasan terbaru</small></span><i>→</i></a>
+        <a href="#" class="js-ig" target="_blank" rel="noopener"><span><b>Instagram</b><small>Intip suasana dan menu terbaru</small></span><i>→</i></a>
+      </div>
+    </div>
+    <form id="resForm" novalidate>
+      <label>Nama<input name="nama" required autocomplete="name"></label>
+      <label>No. WhatsApp<input name="hp" type="tel" required inputmode="tel" autocomplete="tel"></label>
+      <div class="row">
+        <label>Tanggal<input name="tgl" type="date" required></label>
+        <label>Jam<input name="jam" type="time" required></label>
+      </div>
+      <div class="row">
+        <label>Jumlah orang<input name="org" type="number" min="1" max="50" value="2" required></label>
+        <label>Area<select name="area"><option>Indoor</option><option>Semi outdoor</option><option>Belum tahu</option></select></label>
+      </div>
+      <label>Catatan (opsional)<textarea name="cat" rows="2" placeholder="Contoh: ulang tahun anak, bawa stroller"></textarea></label>
+      <p class="error" id="resError" role="alert"></p>
+      <button class="btn btn-light" type="submit">Catat Reservasi</button>
+    </form>
+  </div>
+</section>
+
+<section class="section" id="kontak">
+  <div class="wrap">
+    <h2>Location & Contact</h2>
+    <div class="two map-wrap">
+      <div class="info">
+        <p><strong>Alamat</strong><br>Lotus Mio Bangunjiwo, Mejing, Kalirandu, Bangunjiwo, Kec. Kasihan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55184</p>
+        <p><strong>Jam buka</strong><br><span class="js-hours"></span></p>
+        <p><strong>Email</strong><br><a class="link js-mail" href="#"></a></p>
+        <p><strong>Instagram</strong><br><a class="link js-ig" href="#" target="_blank" rel="noopener">Kunjungi Instagram</a></p>
+        <div class="actions">
+          <a class="btn js-maps" href="#" target="_blank" rel="noopener">Buka di Google Maps</a>
+          <button class="btn btn-ghost-dark" id="dirBtn" type="button">Arahkan dari lokasiku</button>
+        </div>
+        <p class="status" id="dirStatus" role="status"></p>
+      </div>
+      <iframe title="Peta Lotus Mio Bangunjiwo" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Lotus+Mio+Bangunjiwo+Restaurant+Yogyakarta&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+<section class="mampir" id="mampir">
+  <div class="arches" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <p class="open-pill" id="openPill"><span class="dot"></span><span id="openText">Mengecek jam buka...</span></p>
+    <h2 class="big">Lagi di Jogja?<em>Yuk, mampir.</em></h2>
+    <p class="pitch">Ajak <span class="swap" id="swap">keluarga</span> ke Lotus Mio.</p>
+    <p class="lead">Makan bersama, main sepuasnya, dan ciptakan cerita seru. Satu tempat untuk semua kesenangan.</p>
+    <div class="actions">
+      <a href="#reservasi" class="btn btn-res">Reservasi Meja<i>→</i></a>
+      <a href="#" class="btn btn-ghost js-maps" target="_blank" rel="noopener">Buka di Google Maps</a>
+    </div>
+  </div>
+  <div class="ribbon" aria-hidden="true"><div class="track" id="track"></div></div>
+</section>
+</main>
+<footer id="siteFooter"></footer>
+<button class="totop" id="toTop" aria-label="Kembali ke atas" hidden>&uarr;</button>
+<script src="menu-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
